@@ -41,6 +41,12 @@
 			<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php header_image(); ?>" class="header-image" width="<?php echo get_custom_header()->width; ?>" height="<?php echo get_custom_header()->height; ?>" alt="" /></a>
 		<?php endif; ?>
 	</header><!-- #masthead -->
+	
 
+	<!-- Slider -->
+	<?php echo do_shortcode("[metaslider id=4]"); ?>
+	<!-- /Slider -->
+	
+	
 	<div class="container">
 		<div class="col-xs-10">
