@@ -1,0 +1,11 @@
+wp-content/backup/*
+wp-content/cache/*
+wp-content/upgrade/*
+wp-content/uploads/*
+sitemap.*
+
+# Hidden system files
+*.DS_Store
+*[Tt]humbs.db
+*.Trashes
+.idea
