@@ -4,5 +4,4 @@
 	<div>
 		<?php the_content(); ?>
 	</div>
-<!--	--><?php //print_r($post); ?>
 </div>
