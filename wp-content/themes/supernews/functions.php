@@ -9,7 +9,7 @@ add_action( 'wp_enqueue_scripts', 'add_supernews_styles' );
 
 function wpt_register_js() {
 	wp_register_script('jquery-1.11.1.min', get_template_directory_uri() . '/js/jquery-1.11.1.min.js', 'jquery');
-	wp_enqueue_script('jquery-1.11.1.min');
+	//wp_enqueue_script('jquery-1.11.1.min');
 
 	wp_register_script('jquery.bootstrap.min', get_template_directory_uri() . '/js/bootstrap.min.js', 'jquery');
 	wp_enqueue_script('jquery.bootstrap.min');
@@ -22,4 +22,19 @@ function theme_setup() {
 }
 
 
+add_image_size('partners', '100', '50', true);
+
 add_action( 'after_setup_theme', 'theme_setup' );
+
+
+
+
+function theme_slug_widgets_init() {
+	register_sidebar(array(
+			'id'          => 'right-sidebar',
+			'name'        => 'Правый Сайдбар',
+			'description' => 'Он находится справа',
+		)
+	);
+}
+add_action( 'widgets_init', 'theme_slug_widgets_init' );

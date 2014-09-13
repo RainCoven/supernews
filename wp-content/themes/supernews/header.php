@@ -57,7 +57,7 @@
 	<?php if(is_front_page()) : ?>
 		<header class="">
 			<!-- Slider -->
-			<?php echo do_shortcode("[metaslider id=6]"); ?>
+			<?php echo do_shortcode("[metaslider id=4]"); ?>
 			<!-- /Slider -->
 		</header><!-- #masthead -->
 	<?php endif; ?>

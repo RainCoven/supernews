@@ -18,7 +18,7 @@
 get_header(); ?>
 
 	<div>
-		<div>
+		<div class="well col-xs-8 col-xs-offset-1">
 			<?php if ( have_posts() ) : ?>
 
 				<?php /* Start the Loop */ ?>
