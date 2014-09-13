@@ -34,7 +34,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#"><?php bloginfo( 'name' ); ?></a>
+			<a class="navbar-brand" href="/"><?php bloginfo( 'name' ); ?></a>
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
@@ -54,11 +54,13 @@
 			?>
 		</div><!-- /.navbar-collapse -->
 	</nav>
-	<header class="">
-		<!-- Slider -->
-		<?php echo do_shortcode("[metaslider id=6]"); ?>
-		<!-- /Slider -->
-	</header><!-- #masthead -->
+	<?php if(is_front_page()) : ?>
+		<header class="">
+			<!-- Slider -->
+			<?php echo do_shortcode("[metaslider id=6]"); ?>
+			<!-- /Slider -->
+		</header><!-- #masthead -->
+	<?php endif; ?>
 
-	<div class="container">
-		<div class="bs-docs-section">
+	<div class="container bs-docs-container">
+		<div class="row">

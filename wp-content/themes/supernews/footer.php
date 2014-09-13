@@ -7,7 +7,11 @@
 ?>
 </div>
 </div><!-- #main .wrapper -->
-<footer id="colophon" role="contentinfo">
+<footer class="bs-docs-footer" role="contentinfo">
+	<hr>
+	<div class="container">
+		<p>@<?php bloginfo( 'name' ); ?>, <?php echo date('Y'); ?></p>
+	</div>
 </footer><!-- #colophon -->
 </div><!-- #page -->
 
