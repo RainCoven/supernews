@@ -70,7 +70,7 @@ function synved_social_provider_settings()
 				array(
 					$provider_name . '_share_link' => array(
 						'label' => __($provider_label . ' Share Link', 'synved-social'), 
-						'tip' => __('The link used by default for sharing content on ' . $provider_label . ' (a standard one will be used if left empty)', 'synved-social'),
+						'tip' => __('The link used by default for sharing content on ' . $provider_label . '. <b>Note: this generally doesn\'t need to be changed, only change it if you know what you\'re doing.</b>', 'synved-social'),
 						'hint' => $share_item['link']
 					),
 					$provider_name . '_share_title' => array(
@@ -90,7 +90,7 @@ function synved_social_provider_settings()
 				array(
 					$provider_name . '_follow_link' => array(
 						'label' => __($provider_label . ' Follow Link', 'synved-social'), 
-						'tip' => __('The link used by default for following you on ' . $provider_label, 'synved-social'),
+						'tip' => __('The link used by default for following you on ' . $provider_label . '. Change this to point to your own social profile page on ' . $provider_label . '.', 'synved-social'),
 						'hint' => $follow_item['link']
 					),
 					$provider_name . '_follow_title' => array(
@@ -135,7 +135,7 @@ $synved_social_options = array(
 					'tip' => __('Allow shortcodes in Text widgets', 'synved-social')
 				),
 				'show_credit' => array(
-					'default' => true, 'label' => __('Show Credit', 'synved-social'), 
+					'default' => false, 'label' => __('Show Credit', 'synved-social'), 
 					'tip' => __('Display a small icon with a link to the Social Media Feather page', 'synved-social')
 				),
 				'share_message_default' => array(
@@ -232,7 +232,7 @@ $synved_social_options = array(
 			'settings' => array(
 				'icon_skin' => array(
 					'default' => 'regular',
-					'set' => synved_option_callback('synved_social_icon_skin_set', 'regular=Regular'),
+					'set' => synved_option_callback('synved_social_cb_icon_skin_set', 'regular=Regular'),
 					'label' => __('Icon Skin', 'synved-social'), 
 					'tip' => synved_option_callback('synved_social_setting_icon_skin_tip',__('Select the default skin to use for the icons', 'synved-social')),
 					'render' => 'synved_social_icon_skin_render'
@@ -341,7 +341,7 @@ function synved_social_page_settings_tip($tip, $item)
 {
 	if (!function_exists('synved_shortcode_version'))
 	{
-		$tip .= ' <div style="background:#f2f2f2;font-size:110%;color:#444;padding:10px 15px;"><b>' . __('Note', 'synved-social') . '</b>: ' . __('The Social Media Feather plugin is fully compatible with our free <a target="_blank" href="http://synved.com/wordpress-shortcodes/">WordPress Shortcodes</a> plugin!</span>', 'synved-social') . '</div>';
+		$tip .= ' <div style="background:#f2f2f2;font-size:110%;color:#444;margin-right:270px;padding:10px 15px;"><b>' . __('Note', 'synved-social') . '</b>: ' . sprintf(__('The Social Media Feather plugin is fully compatible with our free <a target="_blank" href="%1$s">WordPress Shortcodes</a> plugin! WordPress Shortcodes will simplify adding Social Media shortcodes to your posts and pages! You can install it using your <a href="%2$s">plugin installer</a>.', 'synved-social'), 'http://synved.com/wordpress-shortcodes/', add_query_arg(array('tab' => 'search', 's' => 'synved shortcodes'), admin_url('plugin-install.php'))) . '</div>';
 	}
 	
 	if (function_exists('synved_connect_support_social_follow_render'))
@@ -356,7 +356,7 @@ function synved_social_page_render_fragment($fragment, $out, $params)
 {
 	if ($fragment == 'page-submit-tail')
 	{
-		$out .= '<div style="clear:both; margin-top: -12px;"><a target="_blank" href="http://wordpress.org/support/view/plugin-reviews/social-media-feather?rate=5#postform">If you like the plugin, you can help us by leaving a 5 stars review!</a></div>';
+		$out .= '<div style="clear:both; margin-top: -12px;"><a target="_blank" href="http://wordpress.org/support/view/plugin-reviews/social-media-feather?rate=5#postform" style="font-size:120%"><b>We need your help!</b> If you like the plugin, you can help us by leaving a 5-stars review! It only takes a minute and it\'s free!</a></div>';
 	}
 	
 	return $out;
@@ -367,7 +367,7 @@ function synved_social_section_customize_look_tip($tip, $item)
 	return $tip;
 }
 
-function synved_social_icon_skin_set($set, $item) 
+function synved_social_cb_icon_skin_set($set, $item) 
 {
 	if ($set != null && !is_array($set))
 	{

@@ -2,9 +2,9 @@
 /**
  * The Header template for our theme
  *
- * Displays all of the <head> section and everything up till <div id="main">
  */
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <!--[if IE 7]>
 <html class="ie ie7" <?php language_attributes(); ?>>
 <![endif]-->
@@ -34,32 +34,38 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="/"><?php bloginfo( 'name' ); ?></a>
+			
+			<a class="navbar-brand" href="/">
+				<?php bloginfo( 'name' ); ?>
+			</a>
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse navbar-ex1-collapse">
 			<?php
-				wp_nav_menu( array(
+				wp_nav_menu( 
+					array(
 						'menu'              => 'primary',
 						'theme_location'    => 'primary',
-						'depth'             => 2,
+						'depth'             =>  2,
 						'container'         => 'div',
 						'container_class'   => 'collapse navbar-collapse',
 						'container_id'      => 'bs-example-navbar-collapse-1',
 						'menu_class'        => 'nav navbar-nav',
 						'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
-						'walker'            => new wp_bootstrap_navwalker())
+						'walker'            => new wp_bootstrap_navwalker()
+					)
 				);
 			?>
 		</div><!-- /.navbar-collapse -->
 	</nav>
-	<?php if(is_front_page()) : ?>
+	
+	<?php if ( is_front_page() ) : ?>
 		<header class="">
 			<!-- Slider -->
 			<?php echo do_shortcode("[metaslider id=4]"); ?>
 			<!-- /Slider -->
-		</header><!-- #masthead -->
+		</header>
 	<?php endif; ?>
 
 	<div class="container bs-docs-container">

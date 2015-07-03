@@ -20,14 +20,45 @@ get_header(); ?>
 	<div>
 		<div class="well col-xs-8 col-xs-offset-1">
 			<?php if ( have_posts() ) : ?>
-
+			
 				<?php /* Start the Loop */ ?>
 				<?php while ( have_posts() ) : the_post(); ?>
-					<?php get_template_part( 'content', get_post_format() ); ?>
+				
+					<div class="well col-xs-4 col-xs-offset-1">					
+						<p class="label label-primary">
+							<?php echo get_the_date('d M, Y. H:i:s'); ?>
+						</p>
+						
+						<h2> 	
+							<a href="<?php the_permalink(); ?>">
+								<?php the_title(); ?>
+							</a>
+						</h2>
+						
+						<div>
+							<?php the_content(); ?>
+						</div>
+					</div>
+					
 				<?php endwhile; ?>
-			<?php endif; ?>
+				
+				<?php
+					global $wp_query;
 
-		</div><!-- #content -->
-	</div><!-- #primary -->
+					$big = 999999999; // need an unlikely integer
+
+					echo paginate_links( 
+						array(
+							'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+							'format' => '?paged=%#%',
+							'current' => max( 1, get_query_var('paged') ),
+							'total' => $wp_query->max_num_pages
+						)
+					);
+				?>
+				
+			<?php endif; ?>
+		</div>
+	</div>
 
 <?php get_footer(); ?>

@@ -22,7 +22,7 @@ define('DB_NAME', 'supernews');
 define('DB_USER', 'root');
 
 /** Пароль к базе данных MySQL */
-define('DB_PASSWORD', '123321');
+define('DB_PASSWORD', '');
 
 /** Имя сервера MySQL */
 define('DB_HOST', 'localhost');

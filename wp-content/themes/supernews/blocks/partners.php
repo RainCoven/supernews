@@ -1,8 +1,6 @@
 <?php
 	/*
-	*
 	* Блок с партнёрами
-	*
 	*/
 ?>
 
@@ -12,14 +10,13 @@
 		'post_type' => 'partners',
 		'numberposts' => '3',
 		'post_status' => 'publish'
-	);
-	
+	);	
 	$partners = get_posts($partnersArgs);
 ?>
 
-<?php if($partners) : ?>
+<?php if ( $partners ) : ?>
 	<div class="partners">
-		<?php foreach($partners as $partner) : ?>
+		<?php foreach( $partners as $partner ) : ?>
 			<?php				
 				$partnerTitle = get_the_title($partner->ID);
 				$partnerImageId = get_field('logo', $partner->ID);
